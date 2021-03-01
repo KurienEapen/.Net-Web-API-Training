@@ -9,8 +9,9 @@ namespace FirstWebApplication.Models
     {
         public int Id { get; set; }
         public int ReferenceId { get; set; }
-        public String Type { get; set; }
-        public int Pages { get; set; }
+        public String Name { get; set; }
+        public String Author { get; set; }
+        public int genre { get; set; }
         public float Price { get; set; }
     }
 }
