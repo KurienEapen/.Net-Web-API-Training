@@ -8,16 +8,18 @@ using System.Web.Http;
 
 namespace FirstWebApplication.Controllers
 {
+    [RoutePrefix("api/book")]
     public class BookController : ApiController
     {
         private BookService _bookService = new BookService();
-        // GET: api/Message
+        
+        [Route("all")]
         public IEnumerable<BookModel> Get()
         {
             return _bookService.GetAllBooks();
         }
 
-        // GET: api/Message/5
+        [Route("{id}")]
         public string Get(int id)
         {
             if(id < 10)
@@ -27,18 +29,33 @@ namespace FirstWebApplication.Controllers
             return "big value";
         }
 
-        // POST: api/Message
+        [Route("string/{val}")]
+        public string Get(String val)
+        {
+            if (val == "custom")
+            {
+                return "verified custom";
+            }
+            return "You enterd : "+val;
+        }
+
+        [Route("~/something/else")]
+        public string GetSomethingElse()
+        {
+            return "new route";
+        }
+
         public void Post([FromBody]BookModel book)
         {
             _bookService.AddBook(book);
         }
 
-        // PUT: api/Message/5
+ 
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Message/5
+
         public void Delete(int id)
         {
         }
