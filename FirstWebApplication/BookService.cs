@@ -21,7 +21,7 @@ namespace FirstWebApplication
         {
             private void WriteToFile()
             {
-                StreamWriter writer = new StreamWriter(@"App_Data\file.txt");
+                StreamWriter writer = new StreamWriter(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
                 var data = JsonConvert.SerializeObject(WebApiConfig.AllBooks);
                 writer.Write(data);
                 writer.Close();
@@ -47,7 +47,7 @@ namespace FirstWebApplication
             public IEnumerable<BookModel> GetAllBooks()
             {
                 WebApiConfig.AllBooks.Clear();
-                StreamReader reader = new StreamReader(@"App_Data\file.txt");
+                StreamReader reader = new StreamReader(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
                 string rdata = reader.ReadToEnd();
                 List<BookModel> rdevices = JsonConvert.DeserializeObject<List<BookModel>>(rdata);
                 WebApiConfig.AllBooks = rdevices;
