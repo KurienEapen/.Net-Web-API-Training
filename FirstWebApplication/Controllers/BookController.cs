@@ -23,7 +23,7 @@ namespace FirstWebApplication.Controllers
             {
                 return "read string new";
             }
-            return "some other string";
+            return "some other string which is :"+value;
         }
 
         // GET: api/Message/5

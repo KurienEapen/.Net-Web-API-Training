@@ -27,7 +27,7 @@ namespace FirstWebApplication
                 config.Routes.MapHttpRoute
                 (
                     name: "DefaultNameApi",
-                    routeTemplate: "api/{controller}/{name}",
+                    routeTemplate: "api/{controller}/{value}",
                     defaults: new { name = RouteParameter.Optional }
                 );
         }
