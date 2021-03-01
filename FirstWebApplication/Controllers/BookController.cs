@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstWebApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,12 +8,13 @@ using System.Web.Http;
 
 namespace FirstWebApplication.Controllers
 {
-    public class MessageController : ApiController
+    public class BookController : ApiController
     {
+        private BookService _bookService = new BookService();
         // GET: api/Message
-        public IEnumerable<string> Get()
+        public IEnumerable<BookModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _bookService.GetAllBooks();
         }
 
         // GET: api/Message/5
@@ -26,8 +28,9 @@ namespace FirstWebApplication.Controllers
         }
 
         // POST: api/Message
-        public void Post([FromBody]string value)
+        public void Post([FromBody]BookModel book)
         {
+            _bookService.AddBook(book);
         }
 
         // PUT: api/Message/5
