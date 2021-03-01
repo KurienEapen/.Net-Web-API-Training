@@ -16,11 +16,20 @@ namespace FirstWebApplication
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            config.Routes.MapHttpRoute
+                (
+                    name: "DefaultApi",
+                    routeTemplate: "api/{controller}/{id}",
+                    defaults: new { id = RouteParameter.Optional },
+                    constraints: new { id = @"\d+" }
+                );
+
+                config.Routes.MapHttpRoute
+                (
+                    name: "DefaultNameApi",
+                    routeTemplate: "api/{controller}/{name}",
+                    defaults: new { name = RouteParameter.Optional }
+                );
         }
     }
 }

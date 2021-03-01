@@ -12,9 +12,18 @@ namespace FirstWebApplication.Controllers
     {
         private BookService _bookService = new BookService();
         // GET: api/Message
-        public IEnumerable<BookModel> Get()
+        public IEnumerable<BookModel> GetAllDetails()
         {
             return _bookService.GetAllBooks();
+        }
+
+        public string GetString(String value)
+        {
+            if (value == "new")
+            {
+                return "read string new";
+            }
+            return "some other string";
         }
 
         // GET: api/Message/5
@@ -26,6 +35,8 @@ namespace FirstWebApplication.Controllers
             }
             return "big value";
         }
+
+        
 
         // POST: api/Message
         public void Post([FromBody]BookModel book)
