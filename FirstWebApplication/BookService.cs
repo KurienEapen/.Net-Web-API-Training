@@ -11,8 +11,8 @@ namespace FirstWebApplication
     
         public interface IBookServce
         {
-            IEnumerable<BookModel> GetAllBooks();
-            void AddBook(BookModel newBook);
+            IEnumerable<BookContract> GetAllBooks();
+            void AddBook(BookContract newBook);
             bool DeleteBook(string Name);
             BookModel FindBook(string Name);
         }
@@ -28,9 +28,9 @@ namespace FirstWebApplication
                 writer.Dispose();
             }
             
-            public void AddBook(BookModel newBook)
+            public void AddBook(BookContract newBook)
             {
-                WebApiConfig.AllBooks.Add(newBook);
+                WebApiConfig.AllBooks.Add(newBook.ToModel());
                 WriteToFile();
             }
 
@@ -44,7 +44,7 @@ namespace FirstWebApplication
                 throw new NotImplementedException();
             }
 
-            public IEnumerable<BookModel> GetAllBooks()
+            public IEnumerable<BookContract> GetAllBooks()
             {
                 WebApiConfig.AllBooks.Clear();
                 StreamReader reader = new StreamReader(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
@@ -53,7 +53,7 @@ namespace FirstWebApplication
                 WebApiConfig.AllBooks = rdevices;
                 reader.Close();
                 reader.Dispose();
-                return rdevices;
+                return rdevices.Select(x => x.ToContract());
             }
         }
    

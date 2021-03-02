@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FirstWebApplication.Models
 {
-    public class BookModel
+    public class BookEntity
     {
         public int Id { get; set; }
         public int ReferenceId { get; set; }
