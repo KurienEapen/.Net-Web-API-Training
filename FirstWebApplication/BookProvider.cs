@@ -56,6 +56,7 @@ namespace FirstWebApplication
 
         public bool AddDevice(BookEntity entity)
         {
+            var rowsAffected = 0;
             using (var conn = new SqlConnection(_connectionString))
             {
                 try
@@ -63,7 +64,7 @@ namespace FirstWebApplication
                     conn.Open();
                     var command = new SqlCommand("Select count(*) from Books where Name = @name ", conn);
                     command.Parameters.AddWithValue("@name", entity.Name);
-                    var rowsAffected = Convert.ToInt32(command.ExecuteScalar());
+                    rowsAffected = Convert.ToInt32(command.ExecuteScalar());
                     if (rowsAffected <= 0)
                     {
                         command = new SqlCommand("Insert into Books (Name ,Author ,Genre ,Price) values (@Name ,@Author ,@Genre ,@Price);", conn);
@@ -72,7 +73,6 @@ namespace FirstWebApplication
                         command.Parameters.AddWithValue("@Genre", entity.Genre);
                         command.Parameters.AddWithValue("@Price", entity.Price);
                         rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0;
                     }
                 }
                 catch (Exception)
@@ -83,7 +83,7 @@ namespace FirstWebApplication
                 {
                     conn.Close();
                 }
-                return false;
+                return  rowsAffected > 0;
             }
         }
     }
