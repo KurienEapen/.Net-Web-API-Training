@@ -9,7 +9,7 @@ using System.Web;
 namespace FirstWebApplication
 {
     
-        public interface IBookServce
+        public interface IBookService
         {
             IEnumerable<BookContract> GetAllBooks();
             void AddBook(BookContract newBook);
@@ -17,8 +17,9 @@ namespace FirstWebApplication
             BookModel FindBook(string Name);
         }
 
-        public class BookService : IBookServce
+        public class BookService : IBookService
         {
+            BookProvider _bookProvider = new BookProvider();
             private void WriteToFile()
             {
                 StreamWriter writer = new StreamWriter(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
@@ -31,7 +32,7 @@ namespace FirstWebApplication
             public void AddBook(BookContract newBook)
             {
                 WebApiConfig.AllBooks.Add(newBook.ToModel());
-                WriteToFile();
+                _bookProvider.AddDevice(newBook.ToModel().ToEntity());
             }
 
             public bool DeleteBook(string Name)

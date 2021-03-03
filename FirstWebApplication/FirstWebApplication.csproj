@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BookProvider.cs" />
     <Compile Include="BookService.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Converter.cs" />
