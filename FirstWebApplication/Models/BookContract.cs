@@ -11,10 +11,10 @@ namespace FirstWebApplication.Models
         public int ReferenceId { get; set; }
 
         [Required]
-        [MaxLength(10)]
         public String Name { get; set; }
 
         [Required]
+        [MaxLength(10)]
         public String Author { get; set; }
 
         [Required]
