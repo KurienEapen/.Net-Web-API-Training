@@ -11,7 +11,7 @@ namespace FirstWebApplication.Models
         public int ReferenceId { get; set; }
         public String Name { get; set; }
         public String Author { get; set; }
-        public int Genre { get; set; }
+        public String Genre { get; set; }
         public float Price { get; set; }
     }
 }

@@ -1,1 +1,1 @@
-[{"Name":"Cool Book","Author":"Kurien"},{"Name":"Cool Book 2","Author":"Kurien"}]
+[{"Id":0,"ReferenceId":0,"Name":"Cool Book2","Author":"Not Kurien","Genre":"Non-fiction","Price":0.0}]

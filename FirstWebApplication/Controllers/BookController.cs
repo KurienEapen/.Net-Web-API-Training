@@ -15,7 +15,7 @@ namespace FirstWebApplication.Controllers
 
         [HttpGet]
         [Route("all")]
-        public IEnumerable<BookModel> RetrieveAllBooks()
+        public IEnumerable<BookContract> RetrieveAllBooks()
         {
             return _bookService.GetAllBooks();
         }
@@ -50,9 +50,13 @@ namespace FirstWebApplication.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]BookModel book)
+        public IHttpActionResult AddBook([FromBody]BookContract book)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             _bookService.AddBook(book);
+            return Ok("Book added");
         }
 
         [HttpPut]
