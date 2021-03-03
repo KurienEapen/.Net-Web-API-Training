@@ -13,13 +13,13 @@ namespace FirstWebApplication
         {
             IEnumerable<BookContract> GetAllBooks();
             void AddBook(BookContract newBook);
-            bool DeleteBook(string Name);
-            BookModel FindBook(string Name);
+            bool DeleteBook(string name);
+            BookModel FindBook(string name);
         }
 
         public class BookService : IBookService
         {
-            BookProvider _bookProvider = new BookProvider();
+            private readonly BookProvider _bookProvider = new BookProvider();
             private void WriteToFile()
             {
                 StreamWriter writer = new StreamWriter(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
@@ -35,12 +35,12 @@ namespace FirstWebApplication
                 _bookProvider.AddDevice(newBook.ToModel().ToEntity());
             }
 
-            public bool DeleteBook(string Name)
+            public bool DeleteBook(string name)
             {
                 throw new NotImplementedException();
             }
 
-            public BookModel FindBook(string Name)
+            public BookModel FindBook(string name)
             {
                 throw new NotImplementedException();
             }
@@ -50,11 +50,11 @@ namespace FirstWebApplication
                 WebApiConfig.AllBooks.Clear();
                 StreamReader reader = new StreamReader(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
                 string rdata = reader.ReadToEnd();
-                List<BookModel> rdevices = JsonConvert.DeserializeObject<List<BookModel>>(rdata);
-                WebApiConfig.AllBooks = rdevices;
+                List<BookModel> rDevices = JsonConvert.DeserializeObject<List<BookModel>>(rdata);
+                WebApiConfig.AllBooks = rDevices;
                 reader.Close();
                 reader.Dispose();
-                return rdevices.Select(x => x.ToContract());
+                return rDevices.Select(x => x.ToContract());
             }
         }
    

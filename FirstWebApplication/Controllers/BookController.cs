@@ -11,7 +11,7 @@ namespace FirstWebApplication.Controllers
     [RoutePrefix("api/book")]
     public class BookController : ApiController
     {
-        private BookService _bookService = new BookService();
+        private readonly IBookService _bookService = new BookService();
 
         [HttpGet]
         [Route("all")]
@@ -33,13 +33,13 @@ namespace FirstWebApplication.Controllers
 
         [HttpGet]
         [Route("{val:alpha}")]
-        public string BookByName(String val)
+        public string BookByName(string val)
         {
             if (val == "custom")
             {
                 return "verified custom";
             }
-            return "You enterd : "+val;
+            return "You entered : "+val;
         }
 
         [HttpGet]
