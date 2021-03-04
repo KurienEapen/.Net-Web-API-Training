@@ -50,6 +50,11 @@ namespace FirstWebApplication.Controllers
             return "new route";
         }
 
+        /// <summary>
+        /// Add a book in to the database
+        /// </summary>
+        /// <param name="book">Enter book parameters</param>
+        /// <returns>Status of upload</returns>
         [HttpPost]
         public IHttpActionResult AddBook([FromBody]BookContract book)
         {
