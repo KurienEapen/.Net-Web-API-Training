@@ -18,11 +18,11 @@ namespace FirstWebApplication
             return new BookEntity
             {
                 Id = Convert.ToInt32(reader["Id"]),
-                ReferenceId = Convert.ToInt32(reader["ReferenceId"]),
+                ReferenceId = reader["ReferenceId"].ToString(),
                 Name = reader["Name"].ToString(),
                 Author = reader["Author"].ToString(),
                 Genre = reader["Genre"].ToString(), 
-                Price= Convert.ToSingle(reader["AvailableMemory"])
+                Price= Convert.ToSingle(reader["Price"])
             };
         }
 

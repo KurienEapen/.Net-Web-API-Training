@@ -8,7 +8,7 @@ namespace FirstWebApplication.Models
 {
     public class BookContract
     {
-        public int ReferenceId { get; set; }
+        public String ReferenceId { get; set; }
 
         [Required]
         public String Name { get; set; }

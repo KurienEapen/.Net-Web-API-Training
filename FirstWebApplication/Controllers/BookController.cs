@@ -14,6 +14,7 @@ namespace FirstWebApplication.Controllers
         private readonly IBookService _bookService = new BookService();
 
         [HttpGet]
+        [CustomAuthorization(Users = "kurien,rahul")]
         [Route("all")]
         public IEnumerable<BookContract> RetrieveAllBooks()
         {

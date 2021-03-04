@@ -47,14 +47,15 @@ namespace FirstWebApplication
 
             public IEnumerable<BookContract> GetAllBooks()
             {
-                WebApiConfig.AllBooks.Clear();
-                StreamReader reader = new StreamReader(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
-                string rdata = reader.ReadToEnd();
-                List<BookModel> rDevices = JsonConvert.DeserializeObject<List<BookModel>>(rdata);
-                WebApiConfig.AllBooks = rDevices;
-                reader.Close();
-                reader.Dispose();
-                return rDevices.Select(x => x.ToContract());
+                // WebApiConfig.AllBooks.Clear();
+                // StreamReader reader = new StreamReader(@"C:\Users\kurie\source\training\FirstWebApplication\FirstWebApplication\App_Data\file.txt");
+                // string rdata = reader.ReadToEnd();
+                // List<BookModel> rDevices = JsonConvert.DeserializeObject<List<BookModel>>(rdata);
+                // WebApiConfig.AllBooks = rDevices;
+                // reader.Close();
+                // reader.Dispose();
+                var rBooks = _bookProvider.GetAllBooks();
+                return rBooks.Select(x => x.ToModel().ToContract());
             }
         }
    

@@ -8,7 +8,7 @@ namespace FirstWebApplication.Models
     public class BookEntity
     {
         public int Id { get; set; }
-        public int ReferenceId { get; set; }
+        public String ReferenceId { get; set; }
         public String Name { get; set; }
         public String Author { get; set; }
         public String Genre { get; set; }

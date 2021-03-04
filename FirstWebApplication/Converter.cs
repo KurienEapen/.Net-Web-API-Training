@@ -43,9 +43,9 @@ namespace FirstWebApplication
             };
         }
 
-        public static BookEntity ToModel(this BookEntity entity)
+        public static BookModel ToModel(this BookEntity entity)
         {
-            return new BookEntity
+            return new BookModel
             {
                 Id = entity.Id,
                 ReferenceId = entity.ReferenceId,
