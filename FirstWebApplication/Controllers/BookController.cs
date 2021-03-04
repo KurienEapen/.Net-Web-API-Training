@@ -13,6 +13,10 @@ namespace FirstWebApplication.Controllers
     {
         private readonly IBookService _bookService = new BookService();
 
+        /// <summary>
+        /// Get a list of all books in the database
+        /// </summary>
+        /// <returns>List of books</returns>
         [HttpGet]
         [CustomAuthorization(Users = "kurien,rahul")]
         [Route("all")]
@@ -50,6 +54,11 @@ namespace FirstWebApplication.Controllers
             return "new route";
         }
 
+        /// <summary>
+        /// Add a book to the database
+        /// </summary>
+        /// <param name="book">Enter book properties</param>
+        /// <returns>Status of the upload operation</returns>
         [HttpPost]
         public IHttpActionResult AddBook([FromBody]BookContract book)
         {
